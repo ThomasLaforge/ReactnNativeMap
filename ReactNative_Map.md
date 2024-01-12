@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 # Affichage Map Google
 npx expo install react-native-maps
 
@@ -74,3 +73,28 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 });
+
+## Doc config API Google Map
+https://github.com/react-native-maps/react-native-maps?tab=readme-ov-file
+
+### SafeAreaContext
+npx expo install react-native-safe-area-context
+
+import {SafeAreaView} from 'react-native-safe-area-context';
+
+export default function MapScreen() {
+  return (
+    <SafeAreaView style={styles.container}>
+        <MapView style={styles.map} region={
+            {
+            latitude: 45.18825,
+            longitude: 5.7324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+            }
+        }>
+
+        </MapView>
+    </SafeAreaView>
+  );
+}
