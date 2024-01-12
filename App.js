@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
 
 const Tab = Platform.OS === 'android' 
   ? createMaterialBottomTabNavigator() 
@@ -11,13 +12,14 @@ const Tab = Platform.OS === 'android'
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Settings" component={SettingsScreen} />
+          <Tab.Screen name ="Map" component={MapScreen} />
           <StatusBar style="auto" />
         </Tab.Navigator>
-      </View>
+      </SafeAreaView>
     </NavigationContainer>
   );
 }
