@@ -1,12 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+
+const Tab = Platform.OS === 'android' 
+  ? createMaterialBottomTabNavigator() 
+  : createBottomTabNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Lessssssgo
-      </Text>
-      <StatusBar style="auto" />
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <StatusBar style="auto" />
+      </Tab.Navigator>
     </View>
   );
 }
