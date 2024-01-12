@@ -1,5 +1,5 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import { MapView, Marker }from 'react-native-maps';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -14,8 +14,8 @@ export default function MapScreen() {
             longitudeDelta: 0.0421,
             }
         }>
-
-        </MapView>
+        <Marker coordinate={region}/>
+       </MapView>
     </SafeAreaView>
   );
 }
