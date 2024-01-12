@@ -4,28 +4,38 @@ npx expo install react-native-screens react-native-safe-area-context
 npm install @react-navigation/material-bottom-tabs react-native-paper react-native-vector-icons
 npm install @react-navigation/bottom-tabs
 
+import { StatusBar } from 'expo-status-bar';
+import { Platform, StyleSheet, SafeAreaView, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import MapScreen from './Map';
 
 const Tab = Platform.OS === 'android' 
   ? createMaterialBottomTabNavigator() 
   : createBottomTabNavigator();
 
+const HomeScreen = () => {
+  return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Home!</Text>
+  </View>;
+}
+
+const SettingsScreen = () => {
+  return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Settings!</Text>
+  </View>;
+}
+
+
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Settings" component={SettingsScreen} />
-          <StatusBar style="auto" />
+          <Tab.Screen name ="Map" component={MapScreen} />
         </Tab.Navigator>
-      </View>
     </NavigationContainer>
   );
 }
@@ -39,16 +49,19 @@ const styles = StyleSheet.create({
   },
 });
 
+
 # Affichage Map Google
+npx expo install react-native-maps
+
 import React from 'react';
 import MapView from 'react-native-maps';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 
-export default function Map() {
+export default function MapScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <MapView style={styles.map} />
-    </View>
+    </SafeAreaView>
   );
 }
 
